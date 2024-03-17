@@ -1,36 +1,28 @@
 const inputSearch = document.getElementById("inputSearch");
 const btn = document.getElementById("btn");
-
 const phoneContainer = document.getElementById("phoneContainer");
+const phoneDetails = document.getElementById("phoneDetails");
+// const body = document.querySelector("body");
 
 async function showResult(showMore) {
   console.log(inputSearch.value);
-  let respons = await fetch(
+  let response = await fetch(
     "https://openapi.programming-hero.com/api/phones?search=" +
       inputSearch.value
   );
-  let data = await respons.json();
+  let data = await response.json();
   console.log(data);
 
   phoneContainer.innerHTML = "";
-  for (let i = 0; i < data.data.length; i++) {
+  for (let i = 0; i < 10; i++) {
     let card = phones(data.data[i]);
   }
-
-//   let button = document.createElement("button");
-//   button.classList.add(
-//     "bg-indigo-600",
-//     "p-5",
-//     "rounded-3xl",
-//     "shadow-xl"
-//   );
-//   phoneContainer.appendChild(button);
 }
 
 function phones(data) {
-  const phones = data;
+  const phone = data;
+  console.log(phone);
 
-  console.log(phones);
   let div = document.createElement("div");
   div.classList.add(
     "bg-white",
@@ -44,15 +36,16 @@ function phones(data) {
     "shadow-xl"
   );
   div.innerHTML = `
-    <img src="${phones.image}">
-    <h1 class="text-2xl font-bold">${phones.brand}</h1>
+    <img src="${phone.image}">
+    <h1 class="text-2xl font-bold">${phone.phone_name}</h1>
     <p class="text-center w-[360px] text-xl">There are many variations of passages of available, but the majority have suffered</p>
-    <Button  class="bg-indigo-600 text-white p-5 rounded-lg text-xs font-bold">SHOW DETAILS</Button>
-    
+    <button class="show-details-button bg-indigo-600 text-white p-5 rounded-lg text-xs font-bold">SHOW DETAILS</button>
     `;
-
   phoneContainer.appendChild(div);
-  // console.log(phoneContainer);
+
+  // Attach event listener for the "SHOW DETAILS" button
+  div
+   
 }
 
 btn.addEventListener("click", function (event) {
