@@ -17,6 +17,14 @@ async function showResult(showMore) {
     let card = phones(data.data[i]);
   }
 
+//   let button = document.createElement("button");
+//   button.classList.add(
+//     "bg-indigo-600",
+//     "p-5",
+//     "rounded-3xl",
+//     "shadow-xl"
+//   );
+//   phoneContainer.appendChild(button);
 }
 
 function phones(data) {
@@ -38,7 +46,7 @@ function phones(data) {
   div.innerHTML = `
     <img src="${phones.image}">
     <h1 class="text-2xl font-bold">${phones.brand}</h1>
-    <p class="text-center w-[500px] text-2xl">There are many variations of passages of available, but the majority have suffered</p>
+    <p class="text-center w-[360px] text-xl">There are many variations of passages of available, but the majority have suffered</p>
     <Button  class="bg-indigo-600 text-white p-5 rounded-lg text-xs font-bold">SHOW DETAILS</Button>
     
     `;
